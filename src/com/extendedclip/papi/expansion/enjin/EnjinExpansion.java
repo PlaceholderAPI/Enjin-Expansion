@@ -13,6 +13,7 @@ import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import me.clip.placeholderapi.expansion.Taskable;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
@@ -42,7 +43,7 @@ public class EnjinExpansion extends PlaceholderExpansion implements Cleanable, T
 	}
 
 	@Override
-	public String getPlugin() {
+	public String getRequiredPlugin() {
 		return "EnjinMinecraftPlugin";
 	}
 
@@ -52,7 +53,7 @@ public class EnjinExpansion extends PlaceholderExpansion implements Cleanable, T
 	}
 	
 	@Override
-	public String onPlaceholderRequest(Player p, String identifier) {
+	public String onRequest(OfflinePlayer p, String identifier) {
 
 		if (p == null) {
 			return "";
@@ -74,7 +75,7 @@ public class EnjinExpansion extends PlaceholderExpansion implements Cleanable, T
 	
 	@Override
 	public boolean canRegister() {
-		return Bukkit.getPluginManager().getPlugin(getPlugin()) != null;
+		return Bukkit.getPluginManager().getPlugin(getRequiredPlugin()) != null;
 	}
 	
 	@Override
